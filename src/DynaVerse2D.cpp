@@ -1,6 +1,7 @@
 #include "DynaVerse2D.h"
 #include "DynaVerse/math/Vector2D.h"
 #include "DynaVerse/CollisionDetection2D.h"
+#include "DynaVerse/CollisionResponse2D.h"
 #include <cmath>
 
 // 2D Rigid Body Class Implementation
@@ -40,23 +41,4 @@ bool checkCircleCircleCollision(const RigidBody2D& body1, float radius1,
     float distanceSquared = (body1.position - body2.position).squaredMagnitude();
     float combinedRadiiSquared = (radius1 + radius2) * (radius1 + radius2);
     return distanceSquared <= combinedRadiiSquared;
-}
-
-// Basic Collision Response (Circle-Circle)
-void resolveCircleCircleCollision(RigidBody2D& body1, float radius1,
-    RigidBody2D& body2, float radius2) {
-    // Calculate collision normal
-    Vector2D collisionNormal = (body2.position - body1.position);
-    collisionNormal.normalize();
-
-    // Calculate relative velocity
-    Vector2D relativeVelocity = body2.linearVelocity - body1.linearVelocity;
-
-    // Calculate impulse magnitude
-    float impulseMagnitude = -(1 + 0.5f) * relativeVelocity.dot(collisionNormal) /
-        (1 / body1.mass + 1 / body2.mass);
-
-    // Apply impulses to the bodies
-    body1.linearVelocity = body1.linearVelocity + (collisionNormal * impulseMagnitude / body1.mass);
-    body2.linearVelocity = body2.linearVelocity - (collisionNormal * impulseMagnitude / body2.mass);
 }
