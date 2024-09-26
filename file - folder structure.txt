@@ -1,0 +1,16 @@
+DynaVerse/
+    - include/
+        - DynaVerse/          // Main DynaVerse include directory
+            - DynaVerse2D.h     // 2D physics engine header
+            - DynaVerse3D.h     // 3D physics engine header (when we get there)
+            - ...               // Other potential headers (e.g., collision detection, utilities)
+    - src/
+        - DynaVerse2D.cpp     // 2D physics engine implementation
+        - DynaVerse3D.cpp     // 3D physics engine implementation (later)
+        - ...               // Other implementation files
+    - test/                  // Unit tests and integration tests
+        - ...
+    - examples/              // Example applications or demos
+        - ...
+    - CMakeLists.txt         // CMake build configuration
+    - README.md              // Project documentation
