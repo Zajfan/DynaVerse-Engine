@@ -14,7 +14,13 @@ public:
     Vector2D linearVelocity;
     float angularVelocity;
 
-    RigidBody2D(float mass, const Vector2D& position);
+    // Add shape and size information
+    enum ShapeType { CIRCLE, AABB, POLYGON }; // Add more types as needed
+    ShapeType shapeType;
+    Vector2D size; // For AABBs, this represents half extents
+    float radius; // For circles
+
+    RigidBody2D(float mass, const Vector2D& position, ShapeType shapeType, const Vector2D& size);
 
     // Update the rigid body's position and velocity based on forces and time
     void update(float deltaTime);
