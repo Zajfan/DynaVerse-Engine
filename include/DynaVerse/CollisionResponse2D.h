@@ -3,6 +3,7 @@
 
 #include "DynaVerse/math/Vector2D.h"
 #include "DynaVerse2D.h"
+#include "DynaVerse/CollisionDetection2D.h"
 
 namespace DynaVerse {
 
